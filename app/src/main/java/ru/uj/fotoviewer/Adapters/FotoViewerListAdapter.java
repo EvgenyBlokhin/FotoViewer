@@ -51,7 +51,7 @@ public class FotoViewerListAdapter extends RecyclerView.Adapter<FotoViewerListAd
 
     @Override
     public int getItemCount() {
-        return 0;
+        return fotos != null ? fotos.length : 0;
     }
     public class SingleItemRowHolder extends RecyclerView.ViewHolder {
 
