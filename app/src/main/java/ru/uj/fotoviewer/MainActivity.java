@@ -4,10 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.TextView;
 
 import ru.uj.fotoviewer.Adapters.FotoViewerListAdapter;
 
@@ -16,7 +16,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     FloatingActionButton fab;
     private RecyclerView mRecyclerView;
-    private TextView tvEmpty;
     private FotoViewerListAdapter mAdapter;
     IFotoPresenter mPresenter;
 
@@ -29,6 +28,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(this);
+        if (savedInstanceState == null) {
+            mPresenter = new FotoPresenter();
+        } else {
+            mPresenter = PresenterHolder.getInstance().restorePresenter(savedInstanceState);
+        }
+        setContentView(R.layout.content_main);
+        mRecyclerView = (RecyclerView) findViewById(R.id.rvFotos);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this, LinearLayoutManager.VERTICAL, false));
+        mAdapter = new FotoViewerListAdapter(new Foto[0], this, mPresenter);
+        mRecyclerView.setAdapter(mAdapter);
     }
 
     @Override
@@ -61,15 +70,4 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mAdapter.setFoto(fotos);
     }
 
-    @Override
-    public void showEmptyView() {
-        tvEmpty.setVisibility(View.VISIBLE);
-        mRecyclerView.setVisibility(View.GONE);
-    }
-
-    @Override
-    public void hideEmptyView() {
-        tvEmpty.setVisibility(View.GONE);
-        mRecyclerView.setVisibility(View.VISIBLE);
-    }
 }

@@ -9,6 +9,11 @@ import android.content.Intent;
 
 public class FotoPresenter implements IFotoPresenter {
     private Foto[] loadedFotos;
+
+    public FotoPresenter() {
+
+    }
+
     @Override
     public void openFotoDetails(Foto foto) {
 

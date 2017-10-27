@@ -6,6 +6,4 @@ package ru.uj.fotoviewer;
 
 public interface IFotoView {
     void onGetFotos(Foto[] fotos);
-    void showEmptyView();
-    void hideEmptyView();
 }
