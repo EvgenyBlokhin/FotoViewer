@@ -5,7 +5,7 @@ package ru.uj.fotoviewer;
  */
 
 public interface IFotoPresenter {
-    void openFotoDetails(Foto foto);
+    void openFotoView(Foto foto);
     void getFotoList();
     void bindView(IFotoView view);
     void unbindView();

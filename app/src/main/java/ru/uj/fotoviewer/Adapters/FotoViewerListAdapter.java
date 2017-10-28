@@ -65,7 +65,7 @@ public class FotoViewerListAdapter extends RecyclerView.Adapter<FotoViewerListAd
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mPresenter.openFotoDetails(fotos[getAdapterPosition()]);
+                    mPresenter.openFotoView(fotos[getAdapterPosition()]);
                 }
             });
         }

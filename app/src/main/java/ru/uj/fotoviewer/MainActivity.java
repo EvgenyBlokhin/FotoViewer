@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else {
             mPresenter = PresenterHolder.getInstance().restorePresenter(savedInstanceState);
         }
-        setContentView(R.layout.content_main);
+        setContentView(R.layout.activity_foto_list);
         mRecyclerView = (RecyclerView) findViewById(R.id.rvFotos);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this, LinearLayoutManager.VERTICAL, false));
         mAdapter = new FotoViewerListAdapter(new Foto[0], this, mPresenter);
@@ -68,6 +68,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onGetFotos(Foto[] fotos) {
         mAdapter.setFoto(fotos);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        PresenterHolder.getInstance().savePresenter((BasePresenter<?, ?>) mPresenter, outState);
     }
 
 }
