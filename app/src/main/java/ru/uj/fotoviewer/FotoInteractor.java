@@ -6,7 +6,7 @@ package ru.uj.fotoviewer;
 
 public class FotoInteractor implements IFotoInteractor {
     @Override
-    public void getCities(final OnGetFotosListener listener) {
+    public void getFotos(final OnGetFotosListener listener) {
 
     }
 }

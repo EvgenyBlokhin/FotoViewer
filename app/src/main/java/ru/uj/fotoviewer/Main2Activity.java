@@ -16,7 +16,6 @@ import java.io.File;
 
 public class Main2Activity extends AppCompatActivity implements View.OnClickListener {
 
-
     String mCurrentPhotoPath;
     private Uri mOutputFileUri;
     ImageView mImageView;

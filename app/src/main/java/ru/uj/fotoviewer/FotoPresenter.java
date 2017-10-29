@@ -1,8 +1,5 @@
 package ru.uj.fotoviewer;
 
-import android.content.Context;
-import android.content.Intent;
-
 /**
  * Created by Блохин Евгений on 23.10.2017.
  */
@@ -25,7 +22,7 @@ public class FotoPresenter extends BasePresenter<IFotoInteractor, IFotoView> imp
             this.view.onGetFotos(loadedFotos);
             return;
         }
-        this.model.getCities(this);
+        this.model.getFotos(this);
     }
 
     @Override

@@ -34,7 +34,7 @@ public class FotoViewerListAdapter extends RecyclerView.Adapter<FotoViewerListAd
         notifyDataSetChanged();
     }
     @Override
-    public FotoViewerListAdapter.SingleItemRowHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
+    public SingleItemRowHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.content_main, null);
         RecyclerView.LayoutParams lp = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         v.setLayoutParams(lp);
@@ -43,9 +43,9 @@ public class FotoViewerListAdapter extends RecyclerView.Adapter<FotoViewerListAd
     }
 
     @Override
-    public void onBindViewHolder(FotoViewerListAdapter.SingleItemRowHolder holder, int position) {
-        Foto city = fotos[position];
-        holder.tvFotoName.setText(city.getName());
+    public void onBindViewHolder(SingleItemRowHolder holder, int position) {
+        Foto foto = fotos[position];
+        holder.tvFotoName.setText(foto.getName());
         Picasso.with(mContext).load("hgfdjdfjtdfjyhdfjhsfjhfsfjhsfjhfsjhtgf").fit().into(holder.ivFotoImage);
     }
 
@@ -53,6 +53,7 @@ public class FotoViewerListAdapter extends RecyclerView.Adapter<FotoViewerListAd
     public int getItemCount() {
         return fotos != null ? fotos.length : 0;
     }
+
     public class SingleItemRowHolder extends RecyclerView.ViewHolder {
 
         protected ImageView ivFotoImage;

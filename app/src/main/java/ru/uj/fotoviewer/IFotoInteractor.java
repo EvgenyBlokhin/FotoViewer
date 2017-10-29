@@ -9,5 +9,5 @@ public interface IFotoInteractor {
         void onSuccess(Foto[] fotos);
     }
 
-    void getCities(IFotoInteractor.OnGetFotosListener listener);
+    void getFotos(IFotoInteractor.OnGetFotosListener listener);
 }

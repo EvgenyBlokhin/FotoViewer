@@ -22,17 +22,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (savedInstanceState == null) {
+            mPresenter = new FotoPresenter();
+        } else {
+            mPresenter = PresenterHolder.getInstance().restorePresenter(savedInstanceState);
+        }
+
         setContentView(R.layout.main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(this);
-        if (savedInstanceState == null) {
-            mPresenter = new FotoPresenter();
-        } else {
-            mPresenter = PresenterHolder.getInstance().restorePresenter(savedInstanceState);
-        }
+
         setContentView(R.layout.activity_foto_list);
         mRecyclerView = (RecyclerView) findViewById(R.id.rvFotos);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this, LinearLayoutManager.VERTICAL, false));
