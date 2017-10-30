@@ -3,7 +3,6 @@ package ru.uj.fotoviewer;
 /**
  * Created by Блохин Евгений on 23.10.2017.
  */
-
 public class FotoPresenter extends BasePresenter<IFotoInteractor, IFotoView> implements IFotoPresenter, IFotoInteractor.OnGetFotosListener {
     private Foto[] loadedFotos;
 

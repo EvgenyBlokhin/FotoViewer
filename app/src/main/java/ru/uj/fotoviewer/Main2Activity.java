@@ -12,6 +12,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.squareup.picasso.Picasso;
+
 import java.io.File;
 
 public class Main2Activity extends AppCompatActivity implements View.OnClickListener {
@@ -80,6 +82,8 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
         } else if (resultCode == RESULT_CANCELED) {
             Log.d(TAG, "Canceled");
         }
+//        Второй вариант
+//        Picasso.with(this).load(mCurrentPhotoPath).fit().into(mImageView);
     }
 
     private Uri generateFileUri() {

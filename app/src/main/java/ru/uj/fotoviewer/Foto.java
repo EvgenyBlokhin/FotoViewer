@@ -2,11 +2,6 @@ package ru.uj.fotoviewer;
 
 import java.io.Serializable;
 
-
-import android.location.Location;
-
-import java.io.Serializable;
-
 /**
  * Created by Блохин Евгений on 23.10.2017.
  */
@@ -15,8 +10,6 @@ public class Foto implements Serializable {
     private String id;
 
     private String imageUrl;
-
-    private String description;
 
     private String name;
 
@@ -41,15 +34,6 @@ public class Foto implements Serializable {
         this.imageUrl = imageUrl;
     }
 
-    public String getDescription ()
-    {
-        return description;
-    }
-
-    public void setDescription (String description)
-    {
-        this.description = description;
-    }
 
     public String getName ()
     {
