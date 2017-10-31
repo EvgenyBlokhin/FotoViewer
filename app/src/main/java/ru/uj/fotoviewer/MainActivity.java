@@ -9,15 +9,17 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import java.util.ArrayList;
+
 import ru.uj.fotoviewer.Adapters.FotoViewerListAdapter;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, IFotoView {
 
-    FloatingActionButton fab;
+    private FloatingActionButton fab;
     private RecyclerView mRecyclerView;
     private FotoViewerListAdapter mAdapter;
-    IFotoPresenter mPresenter;
+    private IFotoPresenter mPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_foto_list);
         mRecyclerView = (RecyclerView) findViewById(R.id.rvFotos);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this, LinearLayoutManager.VERTICAL, false));
-        mAdapter = new FotoViewerListAdapter(new Foto[0], this, mPresenter);
+        mAdapter = new FotoViewerListAdapter(new ArrayList<Foto>(), this, mPresenter);
         mRecyclerView.setAdapter(mAdapter);
     }
 
@@ -53,6 +55,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             default:
                 break;
         }
+    }
+
+    public IFotoPresenter getmPresenter() {
+        return mPresenter;
     }
 
     @Override
@@ -69,14 +75,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
-    public void onGetFotos(Foto[] fotos) {
+    public void onGetFotos(ArrayList<Foto> fotos) {
         mAdapter.setFoto(fotos);
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        PresenterHolder.getInstance().savePresenter((BasePresenter<?, ?>) mPresenter, outState);
+        PresenterHolder.getInstance().savePresenter((BasePresenter<?>) mPresenter, outState);
     }
 
 }

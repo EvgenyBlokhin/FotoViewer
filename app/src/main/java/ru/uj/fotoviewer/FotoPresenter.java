@@ -1,15 +1,12 @@
 package ru.uj.fotoviewer;
 
+import java.util.ArrayList;
+
 /**
  * Created by Блохин Евгений on 23.10.2017.
  */
-public class FotoPresenter extends BasePresenter<IFotoInteractor, IFotoView> implements IFotoPresenter, IFotoInteractor.OnGetFotosListener {
-    private Foto[] loadedFotos;
-
-    public FotoPresenter() {
-        this.model = new FotoInteractor();
-    }
-
+public class FotoPresenter extends BasePresenter<IFotoView> implements IFotoPresenter {
+    private ArrayList<Foto> loadedFotos;
     @Override
     public void openFotoView(Foto foto) {
 
@@ -21,7 +18,6 @@ public class FotoPresenter extends BasePresenter<IFotoInteractor, IFotoView> imp
             this.view.onGetFotos(loadedFotos);
             return;
         }
-        this.model.getFotos(this);
     }
 
     @Override
@@ -30,8 +26,8 @@ public class FotoPresenter extends BasePresenter<IFotoInteractor, IFotoView> imp
     }
 
     @Override
-    public void onSuccess(Foto[] fotos) {
-        loadedFotos = fotos;
-        this.view.onGetFotos(fotos);
+    public void addFoto(Foto fotos) {
+        loadedFotos.add(fotos);
+        this.view.onGetFotos(loadedFotos);
     }
 }

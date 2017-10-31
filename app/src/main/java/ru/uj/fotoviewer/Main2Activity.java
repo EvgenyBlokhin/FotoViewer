@@ -3,10 +3,10 @@ package ru.uj.fotoviewer;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -18,13 +18,12 @@ import java.io.File;
 
 public class Main2Activity extends AppCompatActivity implements View.OnClickListener {
 
-    String mCurrentPhotoPath;
-    private Uri mOutputFileUri;
-    ImageView mImageView;
+    private Foto foto;
+    private ImageView mImageView;
     private final int CAMERA_RESULT = 1;
-    Button button_save;
-    Button button_photograph;
-    File directory;
+    private Button button_save;
+    private Button button_photograph;
+    private File directory;
     final String TAG = "myLogs";
 
     @Override
@@ -47,8 +46,11 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
                 intent.putExtra(MediaStore.EXTRA_OUTPUT, generateFileUri());
                 startActivityForResult(intent, CAMERA_RESULT);
                 break;
-            default:
+            case R.id.button_save:
+
                 break;
+                default:
+                    break;
         }
     }
 
@@ -83,16 +85,15 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
             Log.d(TAG, "Canceled");
         }
 //        Второй вариант
-//        Picasso.with(this).load(mCurrentPhotoPath).fit().into(mImageView);
+//        Picasso.with(this).load(foto.getmCurrentPhotoPath()).fit().into(mImageView);
     }
 
     private Uri generateFileUri() {
         File image = new File(directory.getPath() + "/" + "photo_"
                 + System.currentTimeMillis() + ".jpg");
         Log.d(TAG, "fileName = " + image);
-        mCurrentPhotoPath = image.getAbsolutePath();
-        mOutputFileUri = Uri.fromFile(image);
-        return mOutputFileUri;
+        foto = new Foto(image, Uri.fromFile(image), image.getAbsolutePath());
+        return foto.getmOutputFileUri();
     }
 
     private void createDirectory() {

@@ -15,7 +15,7 @@ public class PresenterHolder {
     private static final String SIS_KEY_PRESENTER_ID = "presenter_id";
     private static PresenterHolder instance;
     private final AtomicLong currentId;
-    private final Cache<Long, BasePresenter<?, ?>> presenters;
+    private final Cache<Long, BasePresenter<?>> presenters;
 
     PresenterHolder(long maxSize, long expirationValue, TimeUnit expirationUnit) {
         currentId = new AtomicLong();
@@ -32,14 +32,14 @@ public class PresenterHolder {
         return instance;
     }
 
-    public <P extends BasePresenter<?, ?>> P restorePresenter(Bundle savedInstanceState) {
+    public <P extends BasePresenter<?>> P restorePresenter(Bundle savedInstanceState) {
         Long presenterId = savedInstanceState.getLong(SIS_KEY_PRESENTER_ID);
         P presenter = (P) presenters.getIfPresent(presenterId);
         presenters.invalidate(presenterId);
         return presenter;
     }
 
-    public void savePresenter(BasePresenter<?, ?> presenter, Bundle outState) {
+    public void savePresenter(BasePresenter<?> presenter, Bundle outState) {
         long presenterId = currentId.incrementAndGet();
         presenters.put(presenterId, presenter);
         outState.putLong(SIS_KEY_PRESENTER_ID, presenterId);

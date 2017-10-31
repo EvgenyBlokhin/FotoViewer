@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+
 import ru.uj.fotoviewer.Foto;
 import ru.uj.fotoviewer.IFotoPresenter;
 import ru.uj.fotoviewer.R;
@@ -19,17 +21,17 @@ import ru.uj.fotoviewer.R;
  */
 
 public class FotoViewerListAdapter extends RecyclerView.Adapter<FotoViewerListAdapter.SingleItemRowHolder> {
-    private Foto[] fotos;
+    private ArrayList<Foto> fotos;
     private Context mContext;
     private IFotoPresenter mPresenter;
 
-    public FotoViewerListAdapter(Foto[] fotos, Context context, IFotoPresenter presenter) {
+    public FotoViewerListAdapter(ArrayList<Foto> fotos, Context context, IFotoPresenter presenter) {
         this.fotos = fotos;
         this.mContext = context;
         this.mPresenter = presenter;
     }
 
-    public void setFoto(Foto[] fotos) {
+    public void setFoto(ArrayList<Foto> fotos) {
         this.fotos = fotos;
         notifyDataSetChanged();
     }
@@ -44,14 +46,14 @@ public class FotoViewerListAdapter extends RecyclerView.Adapter<FotoViewerListAd
 
     @Override
     public void onBindViewHolder(SingleItemRowHolder holder, int position) {
-        Foto foto = fotos[position];
+        Foto foto = fotos.get(position);
         holder.tvFotoName.setText(foto.getName());
         Picasso.with(mContext).load("hgfdjdfjtdfjyhdfjhsfjhfsfjhsfjhfsjhtgf").fit().into(holder.ivFotoImage);
     }
 
     @Override
     public int getItemCount() {
-        return fotos != null ? fotos.length : 0;
+        return fotos != null ? fotos.size() : 0;
     }
 
     public class SingleItemRowHolder extends RecyclerView.ViewHolder {
@@ -66,7 +68,7 @@ public class FotoViewerListAdapter extends RecyclerView.Adapter<FotoViewerListAd
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mPresenter.openFotoView(fotos[getAdapterPosition()]);
+                    mPresenter.openFotoView(fotos.get(getAdapterPosition()));
                 }
             });
         }

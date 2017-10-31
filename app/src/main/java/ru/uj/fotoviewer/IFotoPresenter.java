@@ -9,4 +9,5 @@ public interface IFotoPresenter {
     void getFotoList();
     void bindView(IFotoView view);
     void unbindView();
+    void addFoto(Foto fotos);
 }

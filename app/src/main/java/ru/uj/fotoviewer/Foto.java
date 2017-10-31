@@ -1,5 +1,8 @@
 package ru.uj.fotoviewer;
 
+import android.net.Uri;
+
+import java.io.File;
 import java.io.Serializable;
 
 /**
@@ -7,31 +10,37 @@ import java.io.Serializable;
  */
 
 public class Foto implements Serializable {
-    private String id;
 
-    private String imageUrl;
+    private Uri mOutputFileUri;
 
     private String name;
 
+    private String mCurrentPhotoPath;
 
-    public String getId ()
-    {
-        return id;
+    public Foto(File name, Uri mOutputFileUri, String mCurrentPhotoPath) {
+        this.name = name.getName();
+        this.mOutputFileUri = mOutputFileUri;
+        this.mCurrentPhotoPath = mCurrentPhotoPath;
     }
 
-    public void setId (String id)
+    public Uri getmOutputFileUri()
     {
-        this.id = id;
+        return mOutputFileUri;
     }
 
-    public String getImageUrl()
+    public void setmOutputFileUri(Uri mOutputFileUri)
     {
-        return imageUrl;
+        this.mOutputFileUri = mOutputFileUri;
     }
 
-    public void setImageUrl(String imageUrl)
+    public String getmCurrentPhotoPath()
     {
-        this.imageUrl = imageUrl;
+        return mCurrentPhotoPath;
+    }
+
+    public void setmCurrentPhotoPath(String mCurrentPhotoPath)
+    {
+        this.mCurrentPhotoPath = mCurrentPhotoPath;
     }
 
 
