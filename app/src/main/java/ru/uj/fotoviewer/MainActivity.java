@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private RecyclerView mRecyclerView;
     private FotoViewerListAdapter mAdapter;
     private IFotoPresenter mPresenter;
+    private Main2Activity main2Activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else {
             mPresenter = PresenterHolder.getInstance().restorePresenter(savedInstanceState);
         }
-
+        main2Activity = new Main2Activity(mPresenter);
         setContentView(R.layout.main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -55,10 +56,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             default:
                 break;
         }
-    }
-
-    public IFotoPresenter getmPresenter() {
-        return mPresenter;
     }
 
     @Override

@@ -25,6 +25,11 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
     private Button button_photograph;
     private File directory;
     final String TAG = "myLogs";
+    private IFotoPresenter mPresenter;
+
+    public Main2Activity(IFotoPresenter mPresenter) {
+        this.mPresenter = mPresenter;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +52,7 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
                 startActivityForResult(intent, CAMERA_RESULT);
                 break;
             case R.id.button_save:
-
+                mPresenter.addFoto(foto);
                 break;
                 default:
                     break;
