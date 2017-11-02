@@ -1,5 +1,6 @@
 package ru.uj.fotoviewer;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -16,24 +17,26 @@ import com.squareup.picasso.Picasso;
 
 import java.io.File;
 
-public class Main2Activity extends AppCompatActivity implements View.OnClickListener {
+public class Main2Activity extends AppCompatActivity implements View.OnClickListener, IFoto2View {
 
     private Foto foto;
     private ImageView mImageView;
-    private final int CAMERA_RESULT = 1;
+    public static final int CAMERA_RESULT = 1;
     private Button button_save;
     private Button button_photograph;
     private File directory;
     final String TAG = "myLogs";
-    private IFotoPresenter mPresenter;
-
-    public Main2Activity(IFotoPresenter mPresenter) {
-        this.mPresenter = mPresenter;
-    }
+    private IFoto2Presenter mPresenter;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (savedInstanceState == null) {
+            mPresenter = new Foto2Presenter();
+        } else {
+            mPresenter = PresenterHolder.getInstance().restorePresenter(savedInstanceState);
+        }
         setContentView(R.layout.main2);
 
         createDirectory();
@@ -52,7 +55,10 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
                 startActivityForResult(intent, CAMERA_RESULT);
                 break;
             case R.id.button_save:
-                mPresenter.addFoto(foto);
+                Intent intent1 = new Intent();
+                intent1.putExtra("data", foto);
+                setResult(RESULT_OK, intent1);
+                finish();
                 break;
                 default:
                     break;
@@ -65,32 +71,40 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
 
 //        Основной код
 //        if (requestCode == CAMERA_RESULT) {
-//            Bitmap thumbnailBitmap = (Bitmap) data.getExtras().get("data");
-//            mImageView.setImageBitmap(thumbnailBitmap);
-//        } else mImageView.setImageURI(foto.getmOutputFileUri()); // Не работает
+//            if (resultCode == RESULT_OK) {
+//                Bitmap thumbnailBitmap = (Bitmap) data.getExtras().get("data");
+//                mImageView.setImageBitmap(thumbnailBitmap);
+//            } else mImageView.setImageURI(foto.getmOutputFileUri()); // Не работает
+//        }
 
 // Для теста
-        if (resultCode == RESULT_OK) {
-            if (data == null) {
-                Log.d(TAG, "Intent is null");
-            } else {
-                Log.d(TAG, "Photo uri: " + data.getData());
-                Bundle bndl = data.getExtras();
-                if (bndl != null) {
-                    Object obj = data.getExtras().get("data");
-                    if (obj instanceof Bitmap) {
-                        Bitmap bitmap = (Bitmap) obj;
-                        Log.d(TAG, "bitmap " + bitmap.getWidth() + " x "
-                                + bitmap.getHeight());
-                        mImageView.setImageBitmap(bitmap);
+        if (requestCode == CAMERA_RESULT) {
+            if (resultCode == RESULT_OK) {
+                if (data == null) {
+                    Log.d(TAG, "Intent is null");
+                } else {
+                    Log.d(TAG, "Photo uri: " + data.getData());
+                    Bundle bndl = data.getExtras();
+                    if (bndl != null) {
+                        Object obj = data.getExtras().get("data");
+                        if (obj instanceof Bitmap) {
+                            Bitmap bitmap = (Bitmap) obj;
+                            Log.d(TAG, "bitmap " + bitmap.getWidth() + " x "
+                                    + bitmap.getHeight());
+                            mImageView.setImageBitmap(bitmap);
+                        }
                     }
                 }
+            } else if (resultCode == RESULT_CANCELED) {
+                Log.d(TAG, "Canceled");
             }
-        } else if (resultCode == RESULT_CANCELED) {
-            Log.d(TAG, "Canceled");
         }
 //        Второй вариант
-//        Picasso.with(this).load(foto.getmCurrentPhotoPath()).fit().into(mImageView);
+//        if (requestCode == CAMERA_RESULT) {
+//            if (resultCode == RESULT_OK) {
+//                Picasso.with(this).load(foto.getmCurrentPhotoPath()).fit().into(mImageView);
+//            }
+//        }
     }
 
     private Uri generateFileUri() {
@@ -107,6 +121,18 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
                 "MyFolder");
         if (!directory.exists())
             directory.mkdirs();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mPresenter.bindView(this);
+    }
+
+    @Override
+    protected void onPause() {
+        mPresenter.unbindView();
+        super.onPause();
     }
 }
 //    //    метод вызова системного медиа-сканера, чтобы добавить вашу фотографию в базу данных Media Provider, что сделает её видимой в приложении Галерея и других приложениях.

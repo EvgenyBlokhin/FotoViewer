@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Created by Блохин Евгений on 23.10.2017.
  */
 public class FotoPresenter extends BasePresenter<IFotoView> implements IFotoPresenter {
-    private ArrayList<Foto> loadedFotos;
+    private ArrayList<Foto> loadedFotos = new ArrayList<>();
     @Override
     public void openFotoView(Foto foto) {
 

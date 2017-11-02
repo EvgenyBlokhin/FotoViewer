@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private RecyclerView mRecyclerView;
     private FotoViewerListAdapter mAdapter;
     private IFotoPresenter mPresenter;
-    private Main2Activity main2Activity;
+    public static final int FOTO_CAMERA = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +31,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else {
             mPresenter = PresenterHolder.getInstance().restorePresenter(savedInstanceState);
         }
-        main2Activity = new Main2Activity(mPresenter);
         setContentView(R.layout.main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -49,11 +48,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.fab:
-                Intent intent = new Intent(this, main2Activity.getClass());
-                startActivity(intent);
+                Intent intent = new Intent(this, Main2Activity.class);
+                startActivityForResult(intent, FOTO_CAMERA);
                 break;
             default:
                 break;
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == FOTO_CAMERA){
+            if (resultCode == RESULT_OK){
+                Foto foto = (Foto) data.getExtras().get("data");
+                mPresenter.addFoto(foto);
+            }
         }
     }
 
