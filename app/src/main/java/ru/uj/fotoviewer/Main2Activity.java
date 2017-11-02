@@ -67,7 +67,7 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
 //        if (requestCode == CAMERA_RESULT) {
 //            Bitmap thumbnailBitmap = (Bitmap) data.getExtras().get("data");
 //            mImageView.setImageBitmap(thumbnailBitmap);
-//        } else mImageView.setImageURI(mOutputFileUri); // Не работает
+//        } else mImageView.setImageURI(foto.getmOutputFileUri()); // Не работает
 
 // Для теста
         if (resultCode == RESULT_OK) {

@@ -39,7 +39,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(this);
 
-        setContentView(R.layout.activity_foto_list);
         mRecyclerView = (RecyclerView) findViewById(R.id.rvFotos);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this, LinearLayoutManager.VERTICAL, false));
         mAdapter = new FotoViewerListAdapter(new ArrayList<Foto>(), this, mPresenter);
@@ -50,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.fab:
-                Intent intent = new Intent(this, Main2Activity.class);
+                Intent intent = new Intent(this, main2Activity.getClass());
                 startActivity(intent);
                 break;
             default:

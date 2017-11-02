@@ -40,8 +40,8 @@ public class FotoViewerListAdapter extends RecyclerView.Adapter<FotoViewerListAd
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.content_main, null);
         RecyclerView.LayoutParams lp = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         v.setLayoutParams(lp);
-        SingleItemRowHolder mh = new SingleItemRowHolder(v);
-        return mh;
+        SingleItemRowHolder singleItemRowHolder = new SingleItemRowHolder(v);
+        return singleItemRowHolder;
     }
 
     @Override
