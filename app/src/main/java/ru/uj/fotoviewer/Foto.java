@@ -17,8 +17,8 @@ public class Foto implements Serializable {
 
     private String mCurrentPhotoPath;
 
-    public Foto(File name, Uri mOutputFileUri, String mCurrentPhotoPath) {
-        this.name = name.getName();
+    public Foto(String name, Uri mOutputFileUri, String mCurrentPhotoPath) {
+        this.name = name;
         this.mOutputFileUri = mOutputFileUri;
         this.mCurrentPhotoPath = mCurrentPhotoPath;
     }
@@ -28,20 +28,20 @@ public class Foto implements Serializable {
         return mOutputFileUri;
     }
 
-    public void setmOutputFileUri(Uri mOutputFileUri)
-    {
-        this.mOutputFileUri = mOutputFileUri;
-    }
+//    public void setmOutputFileUri(Uri mOutputFileUri)
+//    {
+//        this.mOutputFileUri = mOutputFileUri;
+//    }
 
     public String getmCurrentPhotoPath()
     {
         return mCurrentPhotoPath;
     }
 
-    public void setmCurrentPhotoPath(String mCurrentPhotoPath)
-    {
-        this.mCurrentPhotoPath = mCurrentPhotoPath;
-    }
+//    public void setmCurrentPhotoPath(String mCurrentPhotoPath)
+//    {
+//        this.mCurrentPhotoPath = mCurrentPhotoPath;
+//    }
 
 
     public String getName ()
@@ -49,9 +49,9 @@ public class Foto implements Serializable {
         return name;
     }
 
-    public void setName (String name)
-    {
-        this.name = name;
-    }
+//    public void setName (String name)
+//    {
+//        this.name = name;
+//    }
 
 }

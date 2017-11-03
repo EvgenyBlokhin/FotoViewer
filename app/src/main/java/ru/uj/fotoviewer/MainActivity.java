@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private RecyclerView mRecyclerView;
     private FotoViewerListAdapter mAdapter;
     private IFotoPresenter mPresenter;
+    final String TAG = "myLogs";
     public static final int FOTO_CAMERA = 2;
 
     @Override
@@ -60,8 +62,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == FOTO_CAMERA){
             if (resultCode == RESULT_OK){
-                Foto foto = (Foto) data.getExtras().get("data");
-                mPresenter.addFoto(foto);
+                Log.d(TAG, "ResultOK");
+                if (data == null) {
+                    Log.d(TAG, "Intent1 is null");
+                } else {
+                    Foto foto = (Foto) data.getExtras().get("data");
+                    mPresenter.addFoto(foto);
+                }
             }
         }
     }

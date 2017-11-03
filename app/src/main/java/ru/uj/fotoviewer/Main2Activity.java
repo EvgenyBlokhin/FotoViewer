@@ -60,8 +60,8 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
                 setResult(RESULT_OK, intent1);
                 finish();
                 break;
-                default:
-                    break;
+            default:
+                break;
         }
     }
 
@@ -70,39 +70,48 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
 //        Основной код
-//        if (requestCode == CAMERA_RESULT) {
-//            if (resultCode == RESULT_OK) {
-//                Bitmap thumbnailBitmap = (Bitmap) data.getExtras().get("data");
-//                mImageView.setImageBitmap(thumbnailBitmap);
-//            } else mImageView.setImageURI(foto.getmOutputFileUri()); // Не работает
-//        }
-
-// Для теста
         if (requestCode == CAMERA_RESULT) {
             if (resultCode == RESULT_OK) {
                 if (data == null) {
-                    Log.d(TAG, "Intent is null");
+                    Log.d(TAG, "Intent2 is null");
                 } else {
-                    Log.d(TAG, "Photo uri: " + data.getData());
-                    Bundle bndl = data.getExtras();
-                    if (bndl != null) {
-                        Object obj = data.getExtras().get("data");
-                        if (obj instanceof Bitmap) {
-                            Bitmap bitmap = (Bitmap) obj;
-                            Log.d(TAG, "bitmap " + bitmap.getWidth() + " x "
-                                    + bitmap.getHeight());
-                            mImageView.setImageBitmap(bitmap);
-                        }
-                    }
+                    Bitmap thumbnailBitmap = (Bitmap) data.getExtras().get("data");
+                    mImageView.setImageBitmap(thumbnailBitmap);
                 }
-            } else if (resultCode == RESULT_CANCELED) {
-                Log.d(TAG, "Canceled");
+                mImageView.setImageURI(foto.getmOutputFileUri()); // Работает
             }
         }
+
+// Для теста
+//        if (requestCode == CAMERA_RESULT) {
+//            if (resultCode == RESULT_OK) {
+//                if (data == null) {
+//                    Log.d(TAG, "Intent is null");
+//                } else {
+//                    Log.d(TAG, "Photo uri: " + data.getData());
+//                    Bundle bndl = data.getExtras();
+//                    if (bndl != null) {
+//                        Object obj = data.getExtras().get("data");
+//                        if (obj instanceof Bitmap) {
+//                            Bitmap bitmap = (Bitmap) obj;
+//                            Log.d(TAG, "bitmap " + bitmap.getWidth() + " x "
+//                                    + bitmap.getHeight());
+//                            mImageView.setImageBitmap(bitmap);
+//                        }
+//                    }
+//                }
+//            } else if (resultCode == RESULT_CANCELED) {
+//                Log.d(TAG, "Canceled");
+//            }
+//        }
 //        Второй вариант
 //        if (requestCode == CAMERA_RESULT) {
 //            if (resultCode == RESULT_OK) {
-//                Picasso.with(this).load(foto.getmCurrentPhotoPath()).fit().into(mImageView);
+////                if (data == null) {
+////                    Log.d(TAG, "Intent is null");
+////                } else {
+//                    Picasso.with(this).load(foto.getmCurrentPhotoPath()).fit().into(mImageView);
+////                }
 //            }
 //        }
     }
@@ -111,7 +120,7 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
         File image = new File(directory.getPath() + "/" + "photo_"
                 + System.currentTimeMillis() + ".jpg");
         Log.d(TAG, "fileName = " + image);
-        foto = new Foto(image, Uri.fromFile(image), image.getAbsolutePath());
+        foto = new Foto(image.getName(), Uri.fromFile(image), image.getAbsolutePath());
         return foto.getmOutputFileUri();
     }
 
