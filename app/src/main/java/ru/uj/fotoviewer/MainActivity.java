@@ -69,7 +69,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     Foto foto = (Foto) data.getExtras().get("data");
                     mPresenter.addFoto(foto);
                 }
-            }
+            } else
+                Log.d(TAG, "ResultNoOK");
         }
     }
 
@@ -96,5 +97,4 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onSaveInstanceState(outState);
         PresenterHolder.getInstance().savePresenter((BasePresenter<?>) mPresenter, outState);
     }
-
 }

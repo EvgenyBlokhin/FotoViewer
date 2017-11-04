@@ -44,6 +44,7 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
         button_save = (Button) findViewById(R.id.button_save);
         mImageView = (ImageView) findViewById(R.id.imageView);
         button_photograph.setOnClickListener(this);
+        button_save.setOnClickListener(this);
     }
 
     @Override
@@ -56,8 +57,13 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.button_save:
                 Intent intent1 = new Intent();
+                if (foto == null) {
+                    Log.d(TAG, "FotoNull");
+                } else {
+                    Log.d(TAG, "Foto: " + foto.getName() + foto.getmOutputFileUri());
+                }
                 intent1.putExtra("data", foto);
-                setResult(RESULT_OK, intent1);
+//                setResult(RESULT_OK, intent1);
                 finish();
                 break;
             default:
@@ -70,40 +76,41 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
 //        Основной код
-        if (requestCode == CAMERA_RESULT) {
-            if (resultCode == RESULT_OK) {
-                if (data == null) {
-                    Log.d(TAG, "Intent2 is null");
-                } else {
-                    Bitmap thumbnailBitmap = (Bitmap) data.getExtras().get("data");
-                    mImageView.setImageBitmap(thumbnailBitmap);
-                }
-                mImageView.setImageURI(foto.getmOutputFileUri()); // Работает
-            }
-        }
-
-// Для теста
 //        if (requestCode == CAMERA_RESULT) {
 //            if (resultCode == RESULT_OK) {
 //                if (data == null) {
-//                    Log.d(TAG, "Intent is null");
+//                    Log.d(TAG, "Intent2 is null");
 //                } else {
-//                    Log.d(TAG, "Photo uri: " + data.getData());
-//                    Bundle bndl = data.getExtras();
-//                    if (bndl != null) {
-//                        Object obj = data.getExtras().get("data");
-//                        if (obj instanceof Bitmap) {
-//                            Bitmap bitmap = (Bitmap) obj;
-//                            Log.d(TAG, "bitmap " + bitmap.getWidth() + " x "
-//                                    + bitmap.getHeight());
-//                            mImageView.setImageBitmap(bitmap);
-//                        }
-//                    }
+//                    Bitmap thumbnailBitmap = (Bitmap) data.getExtras().get("data");
+//                    mImageView.setImageBitmap(thumbnailBitmap);
 //                }
-//            } else if (resultCode == RESULT_CANCELED) {
-//                Log.d(TAG, "Canceled");
+//                mImageView.setImageURI(foto.getmOutputFileUri()); // Работает
 //            }
 //        }
+
+// Для теста
+        if (requestCode == CAMERA_RESULT) {
+            if (resultCode == RESULT_OK) {
+                if (data == null) {
+                    Log.d(TAG, "Intent is null");
+                    mImageView.setImageURI(foto.getmOutputFileUri());
+                } else {
+                    Log.d(TAG, "Photo uri: " + data.getData());
+                    Bundle bndl = data.getExtras();
+                    if (bndl != null) {
+                        Object obj = data.getExtras().get("data");
+                        if (obj instanceof Bitmap) {
+                            Bitmap bitmap = (Bitmap) obj;
+                            Log.d(TAG, "bitmap " + bitmap.getWidth() + " x "
+                                    + bitmap.getHeight());
+                            mImageView.setImageBitmap(bitmap);
+                        }
+                    }
+                }
+            } else if (resultCode == RESULT_CANCELED) {
+                Log.d(TAG, "Canceled");
+            }
+        }
 //        Второй вариант
 //        if (requestCode == CAMERA_RESULT) {
 //            if (resultCode == RESULT_OK) {
@@ -132,17 +139,17 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
             directory.mkdirs();
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        mPresenter.bindView(this);
-    }
-
-    @Override
-    protected void onPause() {
-        mPresenter.unbindView();
-        super.onPause();
-    }
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        mPresenter.bindView(this);
+//    }
+//
+//    @Override
+//    protected void onPause() {
+//        mPresenter.unbindView();
+//        super.onPause();
+//    }
 }
 //    //    метод вызова системного медиа-сканера, чтобы добавить вашу фотографию в базу данных Media Provider, что сделает её видимой в приложении Галерея и других приложениях.
 //    private void galleryAddPic() {
