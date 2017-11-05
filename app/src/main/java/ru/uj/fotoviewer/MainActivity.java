@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     final String TAG = "myLogs";
     public static final int FOTO_CAMERA = 2;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,7 +78,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onResume() {
         super.onResume();
-        mPresenter.bindView(this);
+        if (this != null)
+            Log.d(TAG, "MainActivity don`t null");
+        mPresenter.bindView(this); //Unable to resume activity {ru.uj.fotoviewer/ru.uj.fotoviewer.MainActivity}: java.lang.NullPointerException:
+                                    // Attempt to invoke interface method 'void ru.uj.fotoviewer.IFotoPresenter.bindView(ru.uj.fotoviewer.IFotoView)' on a null object reference
+        if (this != null)
+            Log.d(TAG, "MainActivity don`t null");
         mPresenter.getFotoList();
     }
 

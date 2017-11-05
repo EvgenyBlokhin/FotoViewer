@@ -148,6 +148,12 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
         mPresenter.unbindView();
         super.onPause();
     }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        PresenterHolder.getInstance().savePresenter((BasePresenter<?>) mPresenter, outState);
+    }
 }
 //    //    метод вызова системного медиа-сканера, чтобы добавить вашу фотографию в базу данных Media Provider, что сделает её видимой в приложении Галерея и других приложениях.
 //    private void galleryAddPic() {
