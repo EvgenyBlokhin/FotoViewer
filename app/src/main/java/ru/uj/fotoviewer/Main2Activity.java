@@ -1,6 +1,5 @@
 package ru.uj.fotoviewer;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -27,7 +26,6 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
     private File directory;
     final String TAG = "myLogs";
     private IFoto2Presenter mPresenter;
-    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +61,7 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
                     Log.d(TAG, "Foto: " + foto.getName() + foto.getmOutputFileUri());
                 }
                 intent1.putExtra("data", foto);
-//                setResult(RESULT_OK, intent1);
+                setResult(RESULT_OK, intent1);
                 finish();
                 break;
             default:
@@ -80,11 +78,11 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
 //            if (resultCode == RESULT_OK) {
 //                if (data == null) {
 //                    Log.d(TAG, "Intent2 is null");
+//                    mImageView.setImageURI(foto.getmOutputFileUri()); // Работает
 //                } else {
 //                    Bitmap thumbnailBitmap = (Bitmap) data.getExtras().get("data");
 //                    mImageView.setImageBitmap(thumbnailBitmap);
 //                }
-//                mImageView.setImageURI(foto.getmOutputFileUri()); // Работает
 //            }
 //        }
 
@@ -139,17 +137,17 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
             directory.mkdirs();
     }
 
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        mPresenter.bindView(this);
-//    }
-//
-//    @Override
-//    protected void onPause() {
-//        mPresenter.unbindView();
-//        super.onPause();
-//    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mPresenter.bindView(this);
+    }
+
+    @Override
+    protected void onPause() {
+        mPresenter.unbindView();
+        super.onPause();
+    }
 }
 //    //    метод вызова системного медиа-сканера, чтобы добавить вашу фотографию в базу данных Media Provider, что сделает её видимой в приложении Галерея и других приложениях.
 //    private void galleryAddPic() {
