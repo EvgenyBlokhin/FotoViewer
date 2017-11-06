@@ -11,6 +11,8 @@ import java.io.Serializable;
 
 public class Foto implements Serializable {
 
+    private String id;
+
     private Uri mOutputFileUri;
 
     private String name;
@@ -27,7 +29,15 @@ public class Foto implements Serializable {
     {
         return mOutputFileUri;
     }
+    public String getId ()
+    {
+        return id;
+    }
 
+    public void setId (String id)
+    {
+        this.id = id;
+    }
 //    public void setmOutputFileUri(Uri mOutputFileUri)
 //    {
 //        this.mOutputFileUri = mOutputFileUri;

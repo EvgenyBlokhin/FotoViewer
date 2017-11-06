@@ -7,5 +7,5 @@ package ru.uj.fotoviewer;
 public interface IFoto2Presenter {
     void bindView(IFoto2View view);
     void unbindView();
-    void saveFoto(Foto foto);
+//    void saveFoto(Foto foto);
 }

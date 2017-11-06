@@ -3,6 +3,7 @@ package ru.uj.fotoviewer;
 import android.os.Bundle;
 import android.support.test.espresso.core.deps.guava.cache.Cache;
 import android.support.test.espresso.core.deps.guava.cache.CacheBuilder;
+import android.util.Log;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
@@ -16,6 +17,7 @@ public class PresenterHolder {
     private static PresenterHolder instance;
     private final AtomicLong currentId;
     private final Cache<Long, BasePresenter<?>> presenters;
+    final String TAG = "myLogs";
 
     PresenterHolder(long maxSize, long expirationValue, TimeUnit expirationUnit) {
         currentId = new AtomicLong();
@@ -36,6 +38,8 @@ public class PresenterHolder {
         Long presenterId = savedInstanceState.getLong(SIS_KEY_PRESENTER_ID);
         P presenter = (P) presenters.getIfPresent(presenterId);
         presenters.invalidate(presenterId);
+        if (presenter == null)
+            Log.d(TAG, "mPresenter restorePresenter presenter is null");
         return presenter;
     }
 

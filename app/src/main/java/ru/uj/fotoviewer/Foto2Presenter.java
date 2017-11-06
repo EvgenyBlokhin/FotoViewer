@@ -15,8 +15,8 @@ public class Foto2Presenter extends BasePresenter<IFoto2View> implements IFoto2P
         super.bindView((IFoto2View) view);
     }
 
-    @Override
-    public void saveFoto(Foto foto) {
-
-    }
+//    @Override
+//    public void saveFoto(Foto foto) {
+//
+//    }
 }
