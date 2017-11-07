@@ -36,7 +36,9 @@ public class PresenterHolder {
 
     public <P extends BasePresenter<?>> P restorePresenter(Bundle savedInstanceState) {
         Long presenterId = savedInstanceState.getLong(SIS_KEY_PRESENTER_ID);
+        Log.d(TAG, "mPresenter restorePresenter Long presenterId " + presenterId);
         P presenter = (P) presenters.getIfPresent(presenterId);
+        Log.d(TAG, "mPresenter restorePresenter presenter " + presenters);
         presenters.invalidate(presenterId);
         if (presenter == null)
             Log.d(TAG, "mPresenter restorePresenter presenter is null");
@@ -45,6 +47,7 @@ public class PresenterHolder {
 
     public void savePresenter(BasePresenter<?> presenter, Bundle outState) {
         long presenterId = currentId.incrementAndGet();
+        Log.d(TAG, "mPresenter savePresenter Long presenterId" + presenterId);
         presenters.put(presenterId, presenter);
         outState.putLong(SIS_KEY_PRESENTER_ID, presenterId);
     }

@@ -35,8 +35,8 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
         } else {
             mPresenter = PresenterHolder.getInstance().restorePresenter(savedInstanceState);
         }
-        setContentView(R.layout.main2);
 
+        setContentView(R.layout.main2);
         createDirectory();
         button_photograph = (Button) findViewById(R.id.button_photograph);
         button_save = (Button) findViewById(R.id.button_save);

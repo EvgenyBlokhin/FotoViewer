@@ -33,10 +33,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             mPresenter = new FotoPresenter();
             Log.d(TAG, "OnCreate mPresenter null");
         } else {
-            Log.d(TAG, "OnCreate mPresenter don`t null pre");
+            Log.d(TAG, "OnCreate mPresenter don`t null before");
             mPresenter = PresenterHolder.getInstance().restorePresenter(savedInstanceState);
             if (mPresenter == null){
-                Log.d(TAG, "OnCreate mPresenter null post");
+                Log.d(TAG, "OnCreate mPresenter null after");
             }
         }
         setContentView(R.layout.main);
@@ -87,8 +87,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Log.d(TAG, "mPresenter null");
         mPresenter.bindView(this); //Unable to resume activity {ru.uj.fotoviewer/ru.uj.fotoviewer.MainActivity}: java.lang.NullPointerException:
                                     // Attempt to invoke interface method 'void ru.uj.fotoviewer.IFotoPresenter.bindView(ru.uj.fotoviewer.IFotoView)' on a null object reference
-        if (this != null)
-            Log.d(TAG, "MainActivity don`t null");
+        if (this == null)
+            Log.d(TAG, "MainActivity null");
         mPresenter.getFotoList();
     }
 

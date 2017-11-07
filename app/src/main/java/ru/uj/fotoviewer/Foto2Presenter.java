@@ -7,8 +7,6 @@ import android.content.Intent;
  */
 
 public class Foto2Presenter extends BasePresenter<IFoto2View> implements IFoto2Presenter {
-    private IFoto2Presenter iFoto2Presenter;
-
 
     @Override
     public void bindView(IFoto2View view) {
