@@ -32,7 +32,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (savedInstanceState == null) {
             mPresenter = new FotoPresenter();
             Log.d(TAG, "OnCreate mPresenter null");
-        } else {
+        }
+        else {
             Log.d(TAG, "OnCreate mPresenter don`t null before");
             mPresenter = PresenterHolder.getInstance().restorePresenter(savedInstanceState);
             if (mPresenter == null){
