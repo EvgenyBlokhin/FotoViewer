@@ -30,6 +30,7 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d(TAG, "onCreate Main2Activity");
         if (savedInstanceState == null) {
             mPresenter = new Foto2Presenter();
         } else {
@@ -139,12 +140,14 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
 
     @Override
     protected void onResume() {
+        Log.d(TAG, "onResume Main2Activity");
         super.onResume();
         mPresenter.bindView(this);
     }
 
     @Override
     protected void onPause() {
+        Log.d(TAG, "onPause Main2Activity");
         mPresenter.unbindView();
         super.onPause();
     }

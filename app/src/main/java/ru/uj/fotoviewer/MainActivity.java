@@ -28,10 +28,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        Log.d(TAG, "OnCreate MainActivity");
         if (savedInstanceState == null) {
             mPresenter = new FotoPresenter();
-            Log.d(TAG, "OnCreate mPresenter null");
+            Log.d(TAG, "OnCreate mPresenter savedInstanceState null");
         }
         else {
             Log.d(TAG, "OnCreate mPresenter don`t null before");
@@ -84,6 +84,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onResume() {
         super.onResume();
+        Log.d(TAG, "onResume MainActivity");
         if (mPresenter == null)
             Log.d(TAG, "mPresenter null");
         mPresenter.bindView(this); //Unable to resume activity {ru.uj.fotoviewer/ru.uj.fotoviewer.MainActivity}: java.lang.NullPointerException:
@@ -95,8 +96,37 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onPause() {
+        Log.d(TAG, "onPause MainActivity");
         mPresenter.unbindView();
         super.onPause();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        Log.d(TAG, "onStart() MainActivity");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        Log.d(TAG, "onStop() MainActivity");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+
+        Log.d(TAG, "onRestart() MainActivity");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        Log.d(TAG, "onDestroy() MainActivity");
     }
 
     @Override
