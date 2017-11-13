@@ -2,7 +2,6 @@ package ru.uj.fotoviewer;
 
 import android.net.Uri;
 
-import java.io.File;
 import java.io.Serializable;
 
 /**

@@ -64,6 +64,7 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
                 intent1.putExtra("data", foto);
                 setResult(RESULT_OK, intent1);
                 finish();
+//                mPresenter.saveFoto(foto);
                 break;
             default:
                 break;

@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(this);
 
@@ -59,6 +58,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.fab:
                 Intent intent = new Intent(this, Main2Activity.class);
                 startActivityForResult(intent, FOTO_CAMERA);
+//                startActivity(intent);
                 break;
             default:
                 break;
@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (data == null) {
                     Log.d(TAG, "Intent1 is null");
                 } else {
-                    Foto foto = (Foto) data.getExtras().get("data");
+                    Foto foto = (Foto) data.getSerializableExtra("data"); //getExtras().get("data");
                     mPresenter.addFoto(foto);
                 }
             } else
@@ -92,6 +92,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (this == null)
             Log.d(TAG, "MainActivity null");
         mPresenter.getFotoList();
+//        Intent intent = getIntent();
+//        if (intent != null) {
+//            Foto foto = (Foto) intent.getSerializableExtra("data");
+//            mPresenter.addFoto(foto);
+//        }
     }
 
     @Override
