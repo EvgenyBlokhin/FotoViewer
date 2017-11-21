@@ -38,7 +38,7 @@ public class PresenterHolder {
         Long presenterId = savedInstanceState.getLong(SIS_KEY_PRESENTER_ID);
         Log.d(TAG, "mPresenter restorePresenter Long presenterId " + presenterId);
         P presenter = (P) presenters.getIfPresent(presenterId);
-        Log.d(TAG, "mPresenter restorePresenter presenter " + presenters);
+        Log.d(TAG, "mPresenter restorePresenter presenter " + presenter);
         presenters.invalidate(presenterId);
             Log.d(TAG, "mPresenter restorePresenter presenters FotoPresenter" + presenters.toString().getClass());
         if (presenter == null)

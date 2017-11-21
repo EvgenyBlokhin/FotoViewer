@@ -48,7 +48,7 @@ public class FotoViewerListAdapter extends RecyclerView.Adapter<FotoViewerListAd
     public void onBindViewHolder(SingleItemRowHolder holder, int position) {
         Foto foto = fotos.get(position);
         holder.tvFotoName.setText(foto.getName());
-        Picasso.with(mContext).load("hgfdjdfjtdfjyhdfjhsfjhfsfjhsfjhfsjhtgf").fit().into(holder.ivFotoImage);
+        Picasso.with(mContext).load("hgfdjdf").fit().into(holder.ivFotoImage);
     }
 
     @Override
