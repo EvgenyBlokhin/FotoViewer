@@ -41,12 +41,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
         setContentView(R.layout.main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab = findViewById(R.id.fab);
         fab.setOnClickListener(this);
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.rvFotos);
+        mRecyclerView = findViewById(R.id.rvFotos);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this, LinearLayoutManager.VERTICAL, false));
         mAdapter = new FotoViewerListAdapter(new ArrayList<Foto>(), this, mPresenter);
         mRecyclerView.setAdapter(mAdapter);

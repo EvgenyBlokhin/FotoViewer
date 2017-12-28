@@ -37,9 +37,9 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
 
         setContentView(R.layout.main2);
         createDirectory();
-        button_photograph = (Button) findViewById(R.id.button_photograph);
-        button_save = (Button) findViewById(R.id.button_save);
-        mImageView = (ImageView) findViewById(R.id.imageView);
+        button_photograph = findViewById(R.id.button_photograph);
+        button_save = findViewById(R.id.button_save);
+        mImageView = findViewById(R.id.imageView);
         button_photograph.setOnClickListener(this);
         button_save.setOnClickListener(this);
     }
