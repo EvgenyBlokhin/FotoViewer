@@ -16,13 +16,13 @@ import java.io.File;
 
 public class Main2Activity extends AppCompatActivity implements View.OnClickListener, IFoto2View {
 
+    public static final int CAMERA_RESULT = 1;
+    final String TAG = "myLogs";
     private Foto foto;
     private ImageView mImageView;
-    public static final int CAMERA_RESULT = 1;
     private Button button_save;
     private Button button_photograph;
     private File directory;
-    final String TAG = "myLogs";
     private IFoto2Presenter mPresenter;
 
     @Override

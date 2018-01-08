@@ -15,9 +15,9 @@ import java.util.concurrent.atomic.AtomicLong;
 public class PresenterHolder {
     private static final String SIS_KEY_PRESENTER_ID = "presenter_id";
     private static PresenterHolder instance;
+    final String TAG = "myLogs";
     private final AtomicLong currentId;
     private final Cache<Long, BasePresenter<?>> presenters;
-    final String TAG = "myLogs";
 
     PresenterHolder(long maxSize, long expirationValue, TimeUnit expirationUnit) {
         currentId = new AtomicLong();

@@ -1,10 +1,5 @@
 package ru.uj.fotoviewer;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.util.Log;
-
 /**
  * Created by Блохин Евгений on 02.11.2017.
  */

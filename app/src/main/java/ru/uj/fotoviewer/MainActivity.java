@@ -17,13 +17,12 @@ import ru.uj.fotoviewer.Adapters.FotoViewerListAdapter;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, IFotoView {
 
+    public static final int FOTO_CAMERA = 2;
+    final String TAG = "myLogs";
     private FloatingActionButton fab;
     private RecyclerView mRecyclerView;
     private FotoViewerListAdapter mAdapter;
     private IFotoPresenter mPresenter;
-    final String TAG = "myLogs";
-    public static final int FOTO_CAMERA = 2;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
