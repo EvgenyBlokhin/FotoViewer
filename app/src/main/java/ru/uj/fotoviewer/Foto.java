@@ -24,44 +24,36 @@ public class Foto implements Serializable {
         this.mCurrentPhotoPath = mCurrentPhotoPath;
     }
 
-    public String getId ()
-    {
+    public String getId() {
         return id;
     }
 
-    public void setId (String id)
-    {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public Uri getmOutputFileUri()
-    {
+    public Uri getmOutputFileUri() {
         return mOutputFileUri;
     }
 
-    public void setmOutputFileUri(Uri mOutputFileUri)
-    {
+    public void setmOutputFileUri(Uri mOutputFileUri) {
         this.mOutputFileUri = mOutputFileUri;
     }
 
-    public String getmCurrentPhotoPath()
-    {
+    public String getmCurrentPhotoPath() {
         return mCurrentPhotoPath;
     }
 
-    public void setmCurrentPhotoPath(String mCurrentPhotoPath)
-    {
+    public void setmCurrentPhotoPath(String mCurrentPhotoPath) {
         this.mCurrentPhotoPath = mCurrentPhotoPath;
     }
 
 
-    public String getName ()
-    {
+    public String getName() {
         return name;
     }
 
-    public void setName (String name)
-    {
+    public void setName(String name) {
         this.name = name;
     }
 

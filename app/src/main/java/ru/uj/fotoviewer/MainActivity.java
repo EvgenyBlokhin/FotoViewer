@@ -32,11 +32,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (savedInstanceState == null) {
             mPresenter = new FotoPresenter();
             Log.d(TAG, "OnCreate mPresenter savedInstanceState null");
-        }
-        else {
+        } else {
             Log.d(TAG, "OnCreate mPresenter don`t null before");
             mPresenter = PresenterHolder.getInstance().restorePresenter(savedInstanceState);
-            if (mPresenter == null){
+            if (mPresenter == null) {
                 Log.d(TAG, "OnCreate mPresenter null after");
             }
         }
@@ -67,8 +66,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == FOTO_CAMERA){
-            if (resultCode == RESULT_OK){
+        if (requestCode == FOTO_CAMERA) {
+            if (resultCode == RESULT_OK) {
                 Log.d(TAG, "ResultOK");
                 if (data == null) {
                     Log.d(TAG, "Intent1 is null");
@@ -88,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (mPresenter == null)
             Log.d(TAG, "mPresenter null");
         mPresenter.bindView(this); //Unable to resume activity {ru.uj.fotoviewer/ru.uj.fotoviewer.MainActivity}: java.lang.NullPointerException:
-                                    // Attempt to invoke interface method 'void ru.uj.fotoviewer.IFotoPresenter.bindView(ru.uj.fotoviewer.IFotoView)' on a null object reference
+        // Attempt to invoke interface method 'void ru.uj.fotoviewer.IFotoPresenter.bindView(ru.uj.fotoviewer.IFotoView)' on a null object reference
         if (this == null)
             Log.d(TAG, "MainActivity null");
         mPresenter.getFotoList();

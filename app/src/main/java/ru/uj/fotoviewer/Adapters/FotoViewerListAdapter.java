@@ -35,6 +35,7 @@ public class FotoViewerListAdapter extends RecyclerView.Adapter<FotoViewerListAd
         this.fotos = fotos;
         notifyDataSetChanged();
     }
+
     @Override
     public SingleItemRowHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.content_main, null);

@@ -156,8 +156,7 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
         super.onSaveInstanceState(outState);
         PresenterHolder.getInstance().savePresenter((BasePresenter<?>) mPresenter, outState);
     }
-}
-//    //    метод вызова системного медиа-сканера, чтобы добавить вашу фотографию в базу данных Media Provider, что сделает её видимой в приложении Галерея и других приложениях.
+    //    метод вызова системного медиа-сканера, чтобы добавить вашу фотографию в базу данных Media Provider, что сделает её видимой в приложении Галерея и других приложениях.
 //    private void galleryAddPic() {
 //        Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
 //        File f = new File(mCurrentPhotoPath);
@@ -165,4 +164,5 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
 //        mediaScanIntent.setData(contentUri);
 //        this.sendBroadcast(mediaScanIntent);
 //    }
+}
 

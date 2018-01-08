@@ -7,6 +7,7 @@ import java.util.ArrayList;
  */
 public class FotoPresenter extends BasePresenter<IFotoView> implements IFotoPresenter {
     private ArrayList<Foto> loadedFotos = new ArrayList<>();
+
     @Override
     public void openFotoView(Foto foto) {
 
@@ -14,7 +15,7 @@ public class FotoPresenter extends BasePresenter<IFotoView> implements IFotoPres
 
     @Override
     public void getFotoList() {
-        if (loadedFotos != null){
+        if (loadedFotos != null) {
             this.view.onGetFotos(loadedFotos);
             return;
         }

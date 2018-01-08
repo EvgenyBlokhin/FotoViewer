@@ -40,7 +40,7 @@ public class PresenterHolder {
         P presenter = (P) presenters.getIfPresent(presenterId);
         Log.d(TAG, "mPresenter restorePresenter presenter " + presenter);
         presenters.invalidate(presenterId);
-            Log.d(TAG, "mPresenter restorePresenter presenters FotoPresenter" + presenters.toString().getClass());
+        Log.d(TAG, "mPresenter restorePresenter presenters FotoPresenter" + presenters.toString().getClass());
         if (presenter == null)
             Log.d(TAG, "mPresenter restorePresenter presenter is null");
         return presenter;
