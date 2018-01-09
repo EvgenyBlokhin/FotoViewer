@@ -65,13 +65,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        mPresenter.bindView(this);
         if (requestCode == FOTO_CAMERA) {
             if (resultCode == RESULT_OK) {
                 Log.d(TAG, "ResultOK");
                 if (data == null) {
                     Log.d(TAG, "Intent1 is null");
                 } else {
-                    Foto foto = (Foto) data.getSerializableExtra("data"); //getExtras().get("data");
+                    Foto foto = (Foto) data.getParcelableExtra("data"); //getExtras().get("data");
                     mPresenter.addFoto(foto);
                 }
             } else

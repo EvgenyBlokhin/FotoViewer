@@ -64,8 +64,8 @@ public class FotoViewerListAdapter extends RecyclerView.Adapter<FotoViewerListAd
 
         public SingleItemRowHolder(View view) {
             super(view);
-            this.tvFotoName = (TextView) view.findViewById(R.id.fotoName);
-            this.ivFotoImage = (ImageView) view.findViewById(R.id.imageView);
+            this.tvFotoName = view.findViewById(R.id.fotoName);
+            this.ivFotoImage = view.findViewById(R.id.imageView);
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

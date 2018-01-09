@@ -8,9 +8,9 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="384dp"
+        android:layout_width="match_parent"
         android:layout_height="220dp"
-        android:layout_marginBottom="17dp"
+        android:layout_marginBottom="18dp"
         app:layout_constraintBottom_toTopOf="@+id/button_photograph"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -29,7 +29,7 @@
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="231dp"
+        android:layout_marginTop="220dp"
         android:text="@string/photograph"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
