@@ -3,7 +3,7 @@ package ru.uj.fotoviewer;
 import java.util.ArrayList;
 
 /**
- * Created by Блохин Евгений on 23.10.2017.
+ * Created by Blokhin Evgeny on 23.10.2017.
  */
 public class FotoPresenter extends BasePresenter<IFotoView> implements IFotoPresenter {
     private ArrayList<Foto> loadedFotos = new ArrayList<>();

@@ -17,7 +17,7 @@ import ru.uj.fotoviewer.IFotoPresenter;
 import ru.uj.fotoviewer.R;
 
 /**
- * Created by Блохин Евгений on 23.10.2017.
+ * Created by Blokhin Evgeny on 23.10.2017.
  */
 
 public class FotoViewerListAdapter extends RecyclerView.Adapter<FotoViewerListAdapter.SingleItemRowHolder> {

@@ -4,10 +4,8 @@ import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.io.Serializable;
-
 /**
- * Created by Блохин Евгений on 23.10.2017.
+ * Created by Blokhin Evgeny on 23.10.2017.
  */
 
 public class Foto implements Parcelable {
