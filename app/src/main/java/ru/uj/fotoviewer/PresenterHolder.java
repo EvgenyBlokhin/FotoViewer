@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
- * Created by Блохин Евгений on 27.10.2017.
+ * Created by Blokhin Evgeny on 27.10.2017.
  */
 
 public class PresenterHolder {
