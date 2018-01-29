@@ -25,7 +25,7 @@
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
             android:background="@android:color/transparent"
-            android:textSize="26sp" />
+            android:textSize="@dimen/size_text" />
 
         <ImageView
             android:id="@+id/imageView"
