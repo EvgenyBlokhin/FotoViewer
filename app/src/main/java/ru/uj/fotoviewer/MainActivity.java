@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public static final int FOTO_CAMERA = 2;
     final String TAG = "myLogs";
-    private FloatingActionButton fab;
+    private FloatingActionButton mFab;
     private RecyclerView mRecyclerView;
     private FotoViewerListAdapter mAdapter;
     private IFotoPresenter mPresenter;
@@ -41,8 +41,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        fab = findViewById(R.id.fab);
-        fab.setOnClickListener(this);
+        mFab = findViewById(R.id.fab);
+        mFab.setOnClickListener(this);
 
         mRecyclerView = findViewById(R.id.rvFotos);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this, LinearLayoutManager.VERTICAL, false));
