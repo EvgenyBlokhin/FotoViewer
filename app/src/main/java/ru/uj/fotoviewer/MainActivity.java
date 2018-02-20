@@ -91,11 +91,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (this == null)
             Log.d(TAG, "MainActivity null");
         mPresenter.getFotoList();
-//        Intent intent = getIntent();
-//        if (intent != null) {
-//            Foto foto = (Foto) intent.getSerializableExtra("data");
-//            mPresenter.addFoto(foto);
-//        }
     }
 
     @Override
