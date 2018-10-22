@@ -3,7 +3,6 @@ package ru.uj.fotoviewer;
 import android.os.Bundle;
 import android.support.test.espresso.core.deps.guava.cache.Cache;
 import android.support.test.espresso.core.deps.guava.cache.CacheBuilder;
-import android.util.Log;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
@@ -36,19 +35,13 @@ public class PresenterHolder {
 
     public <P extends BasePresenter<?>> P restorePresenter(Bundle savedInstanceState) {
         Long presenterId = savedInstanceState.getLong(SIS_KEY_PRESENTER_ID);
-        Log.d(TAG, "mPresenter restorePresenter Long presenterId " + presenterId);
         P presenter = (P) presenters.getIfPresent(presenterId);
-        Log.d(TAG, "mPresenter restorePresenter presenter " + presenter);
         presenters.invalidate(presenterId);
-        Log.d(TAG, "mPresenter restorePresenter presenters FotoPresenter" + presenters.toString().getClass());
-        if (presenter == null)
-            Log.d(TAG, "mPresenter restorePresenter presenter is null");
         return presenter;
     }
 
     public void savePresenter(BasePresenter<?> presenter, Bundle outState) {
         long presenterId = currentId.incrementAndGet();
-        Log.d(TAG, "mPresenter savePresenter Long presenterId " + presenterId);
         presenters.put(presenterId, presenter);
         outState.putLong(SIS_KEY_PRESENTER_ID, presenterId);
     }

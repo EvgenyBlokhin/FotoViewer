@@ -28,7 +28,6 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d(TAG, "onCreate Main2Activity");
         if (savedInstanceState == null) {
             mPresenter = new Foto2Presenter();
         } else {
@@ -54,11 +53,6 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.button_save:
                 Intent intent1 = new Intent();
-                if (foto == null) {
-                    Log.d(TAG, "FotoNull");
-                } else {
-                    Log.d(TAG, "Foto: " + foto.getName() + foto.getmOutputFileUri());
-                }
                 intent1.putExtra("data", foto);
                 setResult(RESULT_OK, intent1);
                 finish();
@@ -90,17 +84,13 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
         if (requestCode == CAMERA_RESULT) {
             if (resultCode == RESULT_OK) {
                 if (data == null) {
-                    Log.d(TAG, "Intent is null");
                     mImageView.setImageURI(foto.getmOutputFileUri());
                 } else {
-                    Log.d(TAG, "Photo uri: " + data.getData());
                     Bundle bndl = data.getExtras();
                     if (bndl != null) {
                         Object obj = data.getExtras().get("data");
                         if (obj instanceof Bitmap) {
                             Bitmap bitmap = (Bitmap) obj;
-                            Log.d(TAG, "bitmap " + bitmap.getWidth() + " x "
-                                    + bitmap.getHeight());
                             mImageView.setImageBitmap(bitmap);
                         }
                     }
@@ -124,7 +114,6 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
     private Uri generateFileUri() {
         File image = new File(directory.getPath() + "/" + "photo_"
                 + System.currentTimeMillis() + ".jpg");
-        Log.d(TAG, "fileName = " + image);
         foto = new Foto(image.getName(), Uri.fromFile(image), image.getAbsolutePath());
         return foto.getmOutputFileUri();
     }
@@ -139,14 +128,12 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
 
     @Override
     protected void onResume() {
-        Log.d(TAG, "onResume Main2Activity");
         super.onResume();
         mPresenter.bindView(this);
     }
 
     @Override
     protected void onPause() {
-        Log.d(TAG, "onPause Main2Activity");
         mPresenter.unbindView();
         super.onPause();
     }
